@@ -15,3 +15,20 @@ func Example() {
 		}
 	}
 }
+
+// Render an equirectangular texture that tiles seamlessly when wrapped onto a
+// sphere: the prime meridian and both poles are continuous.
+func ExampleSphere() {
+	const seed = int64(1234)
+	const width, height = 512, 256
+
+	sphere, err := NewNormalizedSphere(seed, 4.0)
+	if err != nil {
+		panic(err)
+	}
+	texture, err := sphere.Texture(width, height)
+	if err != nil {
+		panic(err)
+	}
+	_ = texture
+}
